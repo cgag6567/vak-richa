@@ -1,0 +1,9 @@
+{
+  "name": "vaak-richa",
+  "private": true,
+  "version": "1.0.0",
+  "description": "वाक ऋचा — रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच",
+  "dependencies": {
+    "@netlify/blobs": "^10.7.9"
+  }
+}
