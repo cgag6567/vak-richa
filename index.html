@@ -9,19 +9,19 @@
 <meta name="theme-color" content="#6E1423">
 
 <!-- Open Graph / सोशल शेयर प्रीव्यू टैग्स
-     ज़रूरी: नीचे "https://vak-richa.netlify.app/" को अपनी असली डिप्लॉय की गई साइट के URL से बदलें
+     ज़रूरी: नीचे "https://vaak-richa-new.netlify.app/" को अपनी असली डिप्लॉय की गई साइट के URL से बदलें
      (जैसे https://vaak-richa-1234.netlify.app) — Facebook/WhatsApp जैसे प्लेटफ़ॉर्म absolute URL
      ही सही तरीके से पढ़ पाते हैं। यह बदलाव README में समझाया गया है। -->
 <meta property="og:site_name" content="वाक ऋचा">
 <meta property="og:type" content="website">
 <meta property="og:title" content="वाक ऋचा — रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच">
 <meta property="og:description" content="साहित्य, राजनीति, खेल, स्वास्थ्य, सौंदर्य, फैशन, जीवन शैली, तकनीक, डिजिटल दुनिया और स्थानीय मुद्दों पर रचनाएं पढ़ें और प्रकाशित करें।">
-<meta property="og:image" content="https://vak-richa.netlify.app//icons/icon-512.png">
-<meta property="og:url" content="https://vak-richa.netlify.app/">
+<meta property="og:image" content="https://vaak-richa-new.netlify.app//icons/icon-512.png">
+<meta property="og:url" content="https://vaak-richa-new.netlify.app/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="वाक ऋचा — रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच">
 <meta name="twitter:description" content="साहित्य, राजनीति, खेल, स्वास्थ्य और अन्य विषयों पर रचनाएं पढ़ें और प्रकाशित करें।">
-<meta name="twitter:image" content="https://vak-richa.netlify.app//icons/icon-512.png">
+<meta name="twitter:image" content="https://vaak-richa-new.netlify.app//icons/icon-512.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -34,6 +34,62 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Hind:wght@400;500;600;700&family=Baloo+Bhai+2:wght@500;600;700&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
 <style>
+
+  /* ══ Live Newsfeed Notification Banner ══════════════════════ */
+  #live-notif-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    background: linear-gradient(90deg, #6E1423, #B33A2E);
+    color: white; padding: 10px 16px;
+    display: none; align-items: center; justify-content: space-between;
+    font-family: 'Hind', sans-serif; font-size: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    animation: slideDown 0.4s ease;
+  }
+  #live-notif-bar.show { display: flex; }
+  @keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  #live-notif-bar .notif-text { flex: 1; }
+  #live-notif-bar .notif-text strong { display: block; font-size: 13px; }
+  #live-notif-bar .notif-text span { font-size: 11px; opacity: 0.85; }
+  #live-notif-bar .notif-btn {
+    background: white; color: #6E1423; border: none;
+    padding: 5px 14px; border-radius: 20px; font-size: 12px;
+    font-weight: 700; cursor: pointer; margin-left: 10px; white-space: nowrap;
+  }
+  #live-notif-bar .notif-close {
+    background: none; border: none; color: white;
+    font-size: 18px; cursor: pointer; margin-left: 8px; opacity: 0.8;
+  }
+  /* ══ Newsfeed Ticker ══════════════════════════════════════ */
+  #newsfeed-ticker {
+    background: #2A211A; color: #EEE3CE;
+    padding: 8px 16px; font-size: 12px;
+    font-family: 'Hind', sans-serif;
+    display: flex; align-items: center; gap: 12px;
+    overflow: hidden;
+  }
+  #newsfeed-ticker .ticker-label {
+    background: #B33A2E; color: white;
+    padding: 2px 10px; border-radius: 12px;
+    font-size: 11px; font-weight: 700; white-space: nowrap;
+  }
+  #newsfeed-ticker .ticker-content {
+    white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; flex: 1;
+  }
+  /* ══ New Post Dot Indicator ══════════════════════════════ */
+  .new-post-dot {
+    display: inline-block; width: 8px; height: 8px;
+    background: #B33A2E; border-radius: 50%;
+    margin-right: 6px; animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
   :root{
     --paper:#EEE3CE;
     --paper-alt:#E4D5B7;
@@ -243,8 +299,92 @@
     .post-card{padding:1.1rem;}
   }
 </style>
+
+<!-- ══ SEO & Discovery ══════════════════════════════════════════ -->
+<link rel="canonical" href="https://vaak-richa-new.netlify.app/">
+<link rel="alternate" type="application/rss+xml" title="वाक ऋचा RSS Feed" href="https://vaak-richa-new.netlify.app/rss.xml">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+<meta name="language" content="Hindi">
+<meta name="revisit-after" content="1 days">
+<meta name="author" content="वाक ऋचा">
+<meta name="keywords" content="हिंदी साहित्य, कविता, कहानी, राजनीति, खेल, स्वास्थ्य, तकनीक, वाक ऋचा">
+
+<!-- ══ Schema.org NewsArticle (Website) ═══════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "वाक ऋचा",
+  "url": "https://vaak-richa-new.netlify.app",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://vaak-richa-new.netlify.app/icons/icon-512.png",
+    "width": 512,
+    "height": 512
+  },
+  "description": "साहित्य, राजनीति, खेल, स्वास्थ्य, तकनीक और अन्य विषयों पर रचनाएं पढ़ें और प्रकाशित करें।",
+  "inLanguage": "hi",
+  "sameAs": ["https://www.facebook.com/profile.php?id=61588748052956"]
+}
+</script>
+
+<!-- ══ OneSignal Push Notifications ══════════════════════════ -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "ONESIGNAL_APP_ID_PLACEHOLDER",
+      safari_web_id: "web.onesignal.auto.PLACEHOLDER",
+      notifyButton: {
+        enable: true,
+        size: "medium",
+        theme: "default",
+        position: "bottom-left",
+        text: {
+          "tip.state.unsubscribed": "नई रचनाओं की सूचना पाएं",
+          "tip.state.subscribed": "सूचनाएं चालू हैं",
+          "tip.state.blocked": "सूचनाएं बंद हैं",
+          "message.prenotify": "नई रचना आने पर सूचना मिलेगी",
+          "message.action.subscribed": "✅ सूचनाएं चालू हो गईं!",
+          "message.action.resubscribed": "✅ सूचनाएं चालू हो गईं!",
+          "message.action.unsubscribed": "सूचनाएं बंद हो गईं",
+          "dialog.main.title": "सूचनाएं प्राप्त करें",
+          "dialog.main.button.subscribe": "हाँ, सूचनाएं दें",
+          "dialog.main.button.unsubscribe": "नहीं",
+          "dialog.blocked.title": "सूचनाएं अनवरोधित करें",
+          "dialog.blocked.message": "सूचनाएं पाने के लिए browser settings में जाएं।"
+        }
+      },
+      welcomeNotification: {
+        title: "वाक ऋचा में आपका स्वागत है!",
+        message: "नई रचना आने पर आपको सूचना मिलेगी।"
+      }
+    });
+  });
+</script>
+
 </head>
 <body>
+
+<!-- ══ Live Newsfeed Notification Bar ══════════════════════════ -->
+<div id="live-notif-bar">
+  <div class="notif-text">
+    <strong id="notif-title">🔔 नई रचना प्रकाशित!</strong>
+    <span id="notif-author">वाक ऋचा पर नई रचना आई है</span>
+  </div>
+  <button class="notif-btn" onclick="refreshAndShowNewPost()">अभी देखें</button>
+  <button class="notif-close" onclick="hideNotifBar()">✕</button>
+</div>
+
+<!-- ══ Breaking News Ticker ══════════════════════════════════ -->
+<div id="newsfeed-ticker" style="display:none">
+  <span class="ticker-label">🔴 ताज़ा</span>
+  <span class="ticker-content" id="ticker-text">वाक ऋचा पर नई रचनाएं पढ़ें...</span>
+</div>
+
+
 
 <header class="masthead">
   <div class="masthead-top">
@@ -390,7 +530,6 @@
 
 <!-- Netlify Identity: real member accounts (signup/login/logout/email confirmation) -->
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>window.netlifyIdentity && window.netlifyIdentity.init({ APIUrl: "https://vak-richa.netlify.app/.netlify/identity" });</script>
 <script>
 (function(){
   "use strict";
@@ -1118,29 +1257,22 @@
       console.error("Netlify Identity error:", err);
     });
 
-    netlifyIdentity.init({ APIUrl: "https://vak-richa.netlify.app/.netlify/identity" });
+    netlifyIdentity.init();
   }else{
     console.warn("Netlify Identity script not loaded — membership requires this site to be deployed on Netlify with Identity enabled.");
   }
 
   document.getElementById("memberBtn").addEventListener("click", function(){
-    if(currentMember){
-      if(window.netlifyIdentity) netlifyIdentity.logout();
+    if(!window.netlifyIdentity){
+      alert("सदस्यता तभी काम करेगी जब यह साइट Netlify पर डिप्लॉय हो और Identity सक्षम हो।");
       return;
     }
-    pendingPostCategory = null;
-    // Try netlifyIdentity widget first
-    if(window.netlifyIdentity){
-      try {
-        netlifyIdentity.open("login");
-        return;
-      } catch(e) {
-        console.warn("netlifyIdentity.open failed:", e);
-      }
+    if(currentMember){
+      netlifyIdentity.logout();
+    }else{
+      pendingPostCategory = null;
+      netlifyIdentity.open("login");
     }
-    // Fallback: open Netlify Identity directly
-    var loginUrl = "https://vak-richa.netlify.app/.netlify/identity#";
-    window.open(loginUrl, "_blank");
   });
 
   /* ---------- interactions: feed delegation ---------- */
@@ -1446,11 +1578,157 @@
     updateEditorUI();
     updateMemberUI();
     render(); // shows the loading state immediately
-    loadFeed(false).then(highlightSharedPostIfAny);
+    loadFeed(false).then(function(){ highlightSharedPostIfAny(); initLiveNewsfeed(); });
 
     // background refresh so visitors see new posts/comments from others
     // without needing to reload the page (not real-time, just periodic)
     setInterval(function(){ loadFeed(true); }, 45000);
+  }
+
+
+  /* ══════════════════════════════════════════════════════════════
+     📡 LIVE NEWSFEED + PUSH NOTIFICATIONS
+     ══════════════════════════════════════════════════════════════ */
+
+  var _lastKnownPostIds = new Set();
+  var _notifBarVisible = false;
+  var _notifTimeout = null;
+
+  /* ── Notification bar functions ── */
+  function showNotifBar(title, author) {
+    document.getElementById('notif-title').textContent = '🔔 ' + (title || 'नई रचना प्रकाशित!');
+    document.getElementById('notif-author').textContent = (author || 'वाक ऋचा') + ' की नई रचना आई है';
+    var bar = document.getElementById('live-notif-bar');
+    bar.classList.add('show');
+    _notifBarVisible = true;
+    // Auto-hide after 8 seconds
+    clearTimeout(_notifTimeout);
+    _notifTimeout = setTimeout(hideNotifBar, 8000);
+    // Browser notification
+    sendBrowserNotification(title, author);
+  }
+
+  function hideNotifBar() {
+    var bar = document.getElementById('live-notif-bar');
+    bar.classList.remove('show');
+    _notifBarVisible = false;
+  }
+
+  function refreshAndShowNewPost() {
+    hideNotifBar();
+    loadFeed(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── Browser / Push Notification ── */
+  function sendBrowserNotification(title, author) {
+    if (!('Notification' in window)) return;
+    if (Notification.permission === 'granted') {
+      try {
+        new Notification('वाक ऋचा — नई रचना', {
+          body: (title || 'नई रचना') + ' — ' + (author || 'वाक ऋचा'),
+          icon: 'icons/icon-192.png',
+          badge: 'icons/icon-72.png',
+          tag: 'vakricha-new-post',
+          renotify: true,
+          vibrate: [200, 100, 200]
+        });
+      } catch(e) {}
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission();
+    }
+  }
+
+  /* ── Request notification permission on first interaction ── */
+  function requestNotifPermission() {
+    if ('Notification' in window && Notification.permission === 'default') {
+      Notification.requestPermission().then(function(perm) {
+        if (perm === 'granted') {
+          sendBrowserNotification('वाक ऋचा में आपका स्वागत है!', 'नई रचना आने पर सूचना मिलेगी');
+        }
+      });
+    }
+  }
+
+  /* ── Ticker ── */
+  function updateTicker(newPosts) {
+    if (!newPosts || !newPosts.length) return;
+    var ticker = document.getElementById('newsfeed-ticker');
+    var tickerText = document.getElementById('ticker-text');
+    ticker.style.display = 'flex';
+    var texts = newPosts.map(function(p) {
+      return '🖊 ' + p.title + ' — ' + p.name;
+    });
+    tickerText.textContent = texts.join('  ●  ');
+  }
+
+  /* ── Check for new posts (polls every 30 seconds) ── */
+  function initLiveNewsfeed() {
+    // Initialize known IDs from current posts
+    if (posts && posts.length) {
+      posts.forEach(function(p) { _lastKnownPostIds.add(p.id); });
+    }
+    // Update ticker with latest posts
+    if (posts && posts.slice(0, 3).length) {
+      updateTicker(posts.slice(0, 3));
+    }
+
+    // Poll for new posts every 30 seconds
+    setInterval(function() {
+      fetchFeed().then(function(newPosts) {
+        if (!newPosts || !newPosts.length) return;
+
+        // Find truly new posts
+        var brandNew = newPosts.filter(function(p) {
+          return !_lastKnownPostIds.has(p.id);
+        });
+
+        if (brandNew.length > 0) {
+          // Update known IDs
+          newPosts.forEach(function(p) { _lastKnownPostIds.add(p.id); });
+          // Update feed silently
+          posts = newPosts;
+          render();
+          // Show notification for latest new post
+          var latest = brandNew[0];
+          showNotifBar(latest.title, latest.name);
+          // Update ticker
+          updateTicker(brandNew);
+          // OneSignal push (if configured)
+          if (window.OneSignal) {
+            try {
+              window.OneSignal.User.PushSubscription.optIn();
+            } catch(e) {}
+          }
+        }
+      }).catch(function() {});
+    }, 30000);
+
+    // Request notification permission after 3 seconds
+    setTimeout(requestNotifPermission, 3000);
+  }
+
+  /* Schema.org JSON-LD for individual posts (dynamic) */
+  function injectPostSchema(post) {
+    var existing = document.getElementById('post-schema');
+    if (existing) existing.remove();
+    var script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'post-schema';
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": post.title,
+      "author": { "@type": "Person", "name": post.name },
+      "datePublished": post.timestamp,
+      "description": post.content.slice(0, 200),
+      "publisher": {
+        "@type": "Organization",
+        "name": "वाक ऋचा",
+        "logo": { "@type": "ImageObject", "url": "https://vaak-richa-new.netlify.app/icons/icon-512.png" }
+      }
+    });
+    document.head.appendChild(script);
   }
 
   if(document.readyState === "loading"){
