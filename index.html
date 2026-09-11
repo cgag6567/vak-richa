@@ -451,7 +451,7 @@
       </div>
       <div>
         <label class="field-label" for="postContent">सामग्री — कविता, कहानी, निबंध या विचार *</label>
-        <textarea id="postContent" required maxlength="6000"></textarea>
+        <textarea id="postContent" required maxlength="50000"></textarea>
       </div>
       <div>
         <label class="field-label" for="postImage">छवि जोड़ें (वैकल्पिक)</label>
@@ -481,7 +481,7 @@
       </div>
       <div>
         <label class="field-label" for="editContent">सामग्री *</label>
-        <textarea id="editContent" required maxlength="6000"></textarea>
+        <textarea id="editContent" required maxlength="50000"></textarea>
       </div>
       <div>
         <label class="field-label">छवि</label>
@@ -766,7 +766,7 @@
       '</div>'+
       '<form class="reply-form'+(isOpenReply?' open':'')+'" data-reply-form data-post="'+post.id+'" data-comment="'+c.id+'">'+
         '<input type="text" name="rname" placeholder="आपका नाम" required maxlength="60">'+
-        '<textarea name="rtext" placeholder="अपना उत्तर लिखें…" required maxlength="1000"></textarea>'+
+        '<textarea name="rtext" placeholder="अपना उत्तर लिखें…" required maxlength="10000"></textarea>'+
         '<button type="submit">उत्तर भेजें</button>'+
       '</form>'+
       (repliesHTML ? '<div class="replies">'+repliesHTML+'</div>' : '') +
@@ -815,7 +815,7 @@
           '<div class="form-row">'+
             '<input type="text" name="cname" placeholder="आपका नाम" required maxlength="60">'+
           '</div>'+
-          '<textarea name="ctext" placeholder="अपनी टिप्पणी लिखें…" required maxlength="1000"></textarea>'+
+          '<textarea name="ctext" placeholder="अपनी टिप्पणी लिखें…" required maxlength="10000"></textarea>'+
           '<button type="submit">टिप्पणी करें</button>'+
         '</form>'+
         '<div class="comment-list">'+(commentsHTML || '<p style="color:var(--ink-soft); font-size:.9rem;">अभी तक कोई टिप्पणी नहीं। पहली टिप्पणी आप करें।</p>')+'</div>'+
