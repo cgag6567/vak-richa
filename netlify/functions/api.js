@@ -222,7 +222,7 @@ export default async function handler(req, context) {
       id: uid(),
       title: title.slice(0, 120),
       category,
-      content: content.slice(0, 6000),
+      content: content.slice(0, 50000),
       image: image || "",
       name: (user.user_metadata && user.user_metadata.full_name) || user.email.split("@")[0],
       authorEmail: user.email,
@@ -274,7 +274,7 @@ export default async function handler(req, context) {
       ...posts[idx],
       title: (title || posts[idx].title).slice(0, 120),
       category: category || posts[idx].category,
-      content: (content || posts[idx].content).slice(0, 6000),
+      content: (content || posts[idx].content).slice(0, 50000),
       image: image !== undefined ? image : posts[idx].image,
       editedAt: new Date().toISOString(),
     };
