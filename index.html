@@ -548,7 +548,9 @@
     {id:"jeevanshaili", name:"जीवन शैली", desc:"रहन-सहन और रोज़मर्रा के अनुभव"},
     {id:"technic", name:"तकनीक", desc:"विज्ञान और तकनीकी नवाचार"},
     {id:"digital", name:"डिजिटल दुनिया", desc:"इंटरनेट, सोशल मीडिया और नया मीडिया"},
-    {id:"sthaniya", name:"स्थानीय मुद्दे", desc:"शहर, गाँव और समुदाय के सवाल"}
+    {id:"sthaniya", name:"स्थानीय मुद्दे", desc:"शहर, गाँव और समुदाय के सवाल"},
+    {id:"shiksha", name:"🎓 शिक्षा", desc:"ज्ञान, सीखने और विकास की सामग्री"},
+    {id:"sampadkiya", name:"📰 संपादकीय", desc:"संपादकीय टिप्पणी और विश्लेषण", editorsOnly:true}
   ];
 
   var posts = [];
@@ -1053,6 +1055,14 @@
     }
     errEl.textContent = "";
 
+    // Check if category requires PIN or is editors-only
+    var catObj = CATEGORIES.find(function(c){ return c.id === category; });
+    if(catObj && catObj.editorsOnly && !editorMode){
+      errEl.textContent = "📰 संपादकीय श्रेणी केवल संपादकों के लिए उपलब्ध है। संपादक मोड सक्रिय करें।";
+      return;
+    }
+    // शिक्षा category अब बिना PIN के खुली है
+
     var submitBtn = document.querySelector("#postForm .submit-btn");
     submitBtn.disabled = true;
     var originalLabel = submitBtn.textContent;
@@ -1083,12 +1093,20 @@
   function openPinModal(mode, opts){
     pinMode = mode;
     pendingDelete = opts || null;
-    document.getElementById("pinModalTitle").textContent =
-      mode === "login" ? "संपादक सत्यापन" : mode === "edit" ? "बदलाव की पुष्टि करें" : "हटाने की पुष्टि करें";
-    document.getElementById("pinModalDesc").textContent =
-      mode === "login" ? "संपादक मोड सक्रिय करने के लिए 4-अंकीय पिन दर्ज करें।"
-      : mode === "edit" ? "बदलाव सहेजने के लिए पिन दर्ज करें।"
-      : "इस सामग्री को स्थायी रूप से हटाने के लिए पिन दर्ज करें। यह क्रिया पूर्ववत नहीं की जा सकती।";
+    var titles = {
+      "login": "संपादक सत्यापन",
+      "edit": "बदलाव की पुष्टि करें",
+      "delete": "हटाने की पुष्टि करें",
+      "category": "🎓 शिक्षा श्रेणी का प्रवेश"
+    };
+    var descriptions = {
+      "login": "संपादक मोड सक्रिय करने के लिए 4-अंकीय पिन दर्ज करें।",
+      "edit": "बदलाव सहेजने के लिए पिन दर्ज करें।",
+      "delete": "इस सामग्री को स्थायी रूप से हटाने के लिए पिन दर्ज करें। यह क्रिया पूर्ववत नहीं की जा सकती।",
+      "category": "शिक्षा श्रेणी में पोस्ट करने के लिए 4-अंकीय पिन दर्ज करें।"
+    };
+    document.getElementById("pinModalTitle").textContent = titles[mode] || "सत्यापन";
+    document.getElementById("pinModalDesc").textContent = descriptions[mode] || "कृपया पिन दर्ज करें।";
     document.getElementById("pinError").textContent = "";
     document.getElementById("pinInput").value = "";
     showOverlay("pinModalOverlay");
@@ -1101,6 +1119,46 @@
     var errEl = document.getElementById("pinError");
     var confirmBtn = document.querySelector("#pinForm .pin-confirm-btn");
     confirmBtn.disabled = true;
+
+    if(pinMode === "category"){
+      // Category PIN verification (client-side check for education category)
+      var CATEGORY_PIN = "1234"; // शिक्षा श्रेणी का डिफ़ॉल्ट PIN
+      if(val === CATEGORY_PIN){
+        closeModal("pinModalOverlay");
+        var postData = window.pendingPostData;
+        window.pendingPostData = null;
+        if(postData){
+          var submitBtn = document.querySelector("#postForm .submit-btn");
+          submitBtn.disabled = true;
+          var originalLabel = submitBtn.textContent;
+          submitBtn.textContent = "प्रकाशित हो रहा है…";
+          apiCall("createPost", {
+            title: postData.title, category: postData.category, content: postData.content, image: selectedImageData || ""
+          }, true).then(function(data){
+            posts.unshift(data.post);
+            closeModal("postModalOverlay");
+            currentCategoryFilter = postData.category;
+            document.getElementById("categoryFilter").value = postData.category;
+            currentSearch = "";
+            document.getElementById("searchInput").value = "";
+            render();
+            var feedSection = document.querySelector(".feed-section");
+            if(feedSection){ feedSection.scrollIntoView({behavior:"smooth", block:"start"}); }
+          }).catch(function(err){
+            errEl.textContent = err.message || "रचना प्रकाशित नहीं हो सकी, कृपया पुनः प्रयास करें।";
+          }).finally(function(){
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalLabel;
+          });
+        }
+      }else{
+        errEl.textContent = "गलत पिन! कृपया पुनः प्रयास करें।";
+        document.getElementById("pinInput").value = "";
+        document.getElementById("pinInput").focus();
+        confirmBtn.disabled = false;
+      }
+      return;
+    }
 
     if(pinMode === "login"){
       apiCall("verifyPin", {pin: val}).then(function(data){
