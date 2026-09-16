@@ -53,7 +53,16 @@ function getEditorPin() {
 }
 
 function checkPin(pin) {
-  return String(pin).trim() === getEditorPin();
+  return String(pin || "").trim() === getEditorPin();
+}
+
+// ── संपादकीय (editors-only) श्रेणी ──────────────────────────────────
+// इस श्रेणी में रचनाएं सबको दिखती हैं, लेकिन पोस्ट/एडिट सिर्फ़ वही कर
+// सकता है जिसके पास सही EDITOR_PIN है (वही पिन जो "संपादक मोड" खोलता है)।
+const EDITORS_ONLY_CATEGORIES = ["sampadkiya"];
+
+function isEditorsOnly(category) {
+  return EDITORS_ONLY_CATEGORIES.includes(String(category || "").trim());
 }
 
 // ── Facebook auto-post ──────────────────────────────────────────────
@@ -161,6 +170,21 @@ async function postToFacebook({ title, content, category, postId, siteUrl, image
   return { success: true, fbPostId: json.id };
 }
 
+// ── Facebook auto-post wrapper ──────────────────────────────────────
+// संपादकीय जैसी सुरक्षित श्रेणी की रचना कभी Facebook पर नहीं जाती।
+async function postToFacebookViaMake(payload) {
+  if (isEditorsOnly(payload.category)) {
+    console.log("[Facebook] संपादकीय श्रेणी — auto-post skip।");
+    return { skipped: true, reason: "editors_only" };
+  }
+  try {
+    return await postToFacebook(payload);
+  } catch (e) {
+    console.error("[Facebook] auto-post exception:", e);
+    return { success: false, error: String(e) };
+  }
+}
+
 // ── Netlify Identity JWT verify ────────────────────────────────────
 async function verifyIdentityToken(authHeader) {
   if (!authHeader || !authHeader.startsWith("Bearer ")) return null;
@@ -190,7 +214,7 @@ export default async function handler(req, context) {
 
   const store = getPostsStore(context);
 
-  // GET → पूरा feed लौटाएं
+  // GET → पूरा feed लौटाएं (संपादकीय सहित — सबको दिखती है)
   if (req.method === "GET") {
     const posts = await loadPosts(store);
     return jsonRes({ posts });
@@ -213,9 +237,13 @@ export default async function handler(req, context) {
     const user = await verifyIdentityToken(authHeader);
     if (!user) return errorRes("प्रमाणीकरण आवश्यक है — कृपया लॉगिन करें।", 401);
 
-    const { title, category, content, image } = body;
+    const { title, category, content, image, pin } = body;
     if (!title || !category || !content)
       return errorRes("शीर्षक, श्रेणी और सामग्री आवश्यक हैं।");
+
+    // संपादकीय श्रेणी में पोस्ट करने के लिए संपादक पिन (EDITOR_PIN) आवश्यक
+    if (isEditorsOnly(category) && !checkPin(pin))
+      return errorRes("📰 संपादकीय श्रेणी में केवल संपादक ही पोस्ट कर सकते हैं।", 403);
 
     const posts = await loadPosts(store);
     const post = {
