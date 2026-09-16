@@ -558,6 +558,7 @@
   var currentMember = null; // { name, email } derived from Netlify Identity's current user
   var pendingPostCategory = null;
   var editorMode = false;
+  var editorPin = "";                   // संपादक लॉगिन पर सत्यापित पिन — सिर्फ़ स्मृति में
   var currentCategoryFilter = "all";
   var currentSearch = "";
   var uiState = { openComments:{}, openContent:{}, openReplyForms:{} };
@@ -569,6 +570,9 @@
 
   /* ---------- utils ---------- */
   function uid(prefix){ return prefix + Date.now().toString(36) + Math.random().toString(36).slice(2,8); }
+  // संपादकीय श्रेणी तक पहुँच: या तो संपादक मोड चालू हो, या सही पिन डाला गया हो
+  // संपादकीय श्रेणी में पोस्ट करने का अधिकार सिर्फ़ संपादक मोड को है
+  function canPostSampadkiya(){ return editorMode; }
   function esc(str){
     return String(str==null?"":str).replace(/[&<>"']/g, function(m){
       return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m];
@@ -729,7 +733,8 @@
   }
 
   function populatePostCategorySelect(){
-    var optionsHTML = CATEGORIES.map(function(c){
+    var postableCategories = CATEGORIES.filter(function(c){ return !c.editorsOnly || canPostSampadkiya(); });
+    var optionsHTML = postableCategories.map(function(c){
       return '<option value="'+c.id+'">'+esc(c.name)+'</option>';
     }).join("");
     document.getElementById("postCategory").innerHTML = '<option value="" disabled selected>श्रेणी चुनें</option>' + optionsHTML;
@@ -907,6 +912,12 @@
 
   /* ---------- new post modal ---------- */
   function requestNewPost(categoryId){
+    var cat = CATEGORIES.find(function(c){ return c.id === categoryId; });
+    if(cat && cat.editorsOnly && !canPostSampadkiya()){
+      alert("📰 संपादकीय श्रेणी में केवल संपादक ही पोस्ट कर सकते हैं। कृपया पहले ऊपर '✎ संपादक मोड' से लॉगिन करें।");
+      openPinModal("login");
+      return;
+    }
     if(!currentMember){
       pendingPostCategory = categoryId || null;
       if(window.netlifyIdentity){ netlifyIdentity.open("login"); }
@@ -1057,8 +1068,9 @@
 
     // Check if category requires PIN or is editors-only
     var catObj = CATEGORIES.find(function(c){ return c.id === category; });
-    if(catObj && catObj.editorsOnly && !editorMode){
-      errEl.textContent = "📰 संपादकीय श्रेणी केवल संपादकों के लिए उपलब्ध है। संपादक मोड सक्रिय करें।";
+    if(catObj && catObj.editorsOnly && !canPostSampadkiya()){
+      errEl.textContent = "📰 संपादकीय श्रेणी में केवल संपादक ही पोस्ट कर सकते हैं। संपादक मोड सक्रिय करें।";
+      openPinModal("login");
       return;
     }
     // शिक्षा category अब बिना PIN के खुली है
@@ -1069,7 +1081,8 @@
     submitBtn.textContent = "प्रकाशित हो रहा है…";
 
     apiCall("createPost", {
-      title: title, category: category, content: content, image: selectedImageData || ""
+      title: title, category: category, content: content, image: selectedImageData || "",
+      pin: editorPin
     }, true).then(function(data){
       posts.unshift(data.post);
       closeModal("postModalOverlay");
@@ -1133,7 +1146,8 @@
           var originalLabel = submitBtn.textContent;
           submitBtn.textContent = "प्रकाशित हो रहा है…";
           apiCall("createPost", {
-            title: postData.title, category: postData.category, content: postData.content, image: selectedImageData || ""
+            title: postData.title, category: postData.category, content: postData.content, image: selectedImageData || "",
+            pin: editorPin
           }, true).then(function(data){
             posts.unshift(data.post);
             closeModal("postModalOverlay");
@@ -1164,7 +1178,9 @@
       apiCall("verifyPin", {pin: val}).then(function(data){
         if(data.ok){
           editorMode = true;
+          editorPin = val;
           updateEditorUI();
+          populatePostCategorySelect();  // अब "पोस्ट श्रेणी" चयन में संपादकीय भी दिखेगी
           closeModal("pinModalOverlay");
           render();
         }else{
@@ -1557,7 +1573,9 @@
   document.getElementById("editorToggle").addEventListener("click", function(){
     if(editorMode){
       editorMode = false;
+      editorPin = "";
       updateEditorUI();
+      populatePostCategorySelect();   // "पोस्ट श्रेणी" चयन से संपादकीय हटा दें
       render();
     }else{
       openPinModal("login");
