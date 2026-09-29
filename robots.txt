@@ -1,4 +1,4 @@
-# वाक ऋचा - robots.txt
+# वाक ऋचा - robots.txt 
 # यह file search engines को बताता है कि site को कैसे crawl करें
 
 # सभी bots के लिए नियम
