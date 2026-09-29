@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- वाक ऋचा - Google News Sitemap -->
+<!-- यह sitemap Google News को नई रचनाओं के बारे में बताता है -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>वाक ऋचा — रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच</news:title>
+    </news:news>
+  </url>
+
+  <!-- साहित्य Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=sahitya</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - साहित्य</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>साहित्य - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- राजनीति Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=rajniti</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - राजनीति</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>राजनीति - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- खेल Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=khel</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - खेल</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>खेल - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- स्वास्थ्य Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=swasthya</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - स्वास्थ्य</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>स्वास्थ्य - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- सौंदर्य Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=saundarya</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - सौंदर्य</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>सौंदर्य - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- फैशन Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=fashion</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - फैशन</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>फैशन - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- जीवन शैली Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=jeevanshaili</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - जीवन शैली</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>जीवन शैली - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- तकनीक Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=technic</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - तकनीक</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>तकनीक - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- डिजिटल दुनिया Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=digital</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - डिजिटल दुनिया</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>डिजिटल दुनिया - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- स्थानीय मुद्दे Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=sthaniya</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - स्थानीय मुद्दे</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>स्थानीय मुद्दे - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- शिक्षा Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=shiksha</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - शिक्षा</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>शिक्षा - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+  <!-- संपादकीय Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=sampadkiya</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>daily</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>वाक ऋचा - संपादकीय</news:name>
+        <news:language>hi</news:language>
+      </news:publication>
+      <news:publication_date>2024-01-15T00:00:00+05:30</news:publication_date>
+      <news:title>संपादकीय - वाक ऋचा</news:title>
+    </news:news>
+  </url>
+
+</urlset>
