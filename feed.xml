@@ -4,21 +4,21 @@
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>वाक ऋचा - रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच</title>
-    <link>https://satya-pratibimb.netlify.app/</link>
+    <link>https://vaak-richa-new.netlify.app/</link>
     <description>साहित्य, राजनीति, खेल, स्वास्थ्य, सौंदर्य, फैशन, जीवन शैली, तकनीक, डिजिटल दुनिया और स्थानीय मुद्दों पर रचनाएं पढ़ें और प्रकाशित करें।</description>
     <language>hi</language>
     <lastBuildDate>2024-01-15T12:00:00+05:30</lastBuildDate>
     <ttl>60</ttl>
     <image>
-      <url>https://satya-pratibimb.netlify.app/icons/icon-512.png</url>
+      <url>https://vaak-richa-new.netlify.app/icons/icon-512.png</url>
       <title>वाक ऋचा</title>
-      <link>https://satya-pratibimb.netlify.app/</link>
+      <link>https://vaak-richa-new.netlify.app/</link>
     </image>
 
     <!-- Sample articles - ये dynamically update होने चाहिए -->
     <item>
       <title>वाक ऋचा पर नई रचनाएं</title>
-      <link>https://satya-pratibimb.netlify.app/</link>
+      <link>https://vaak-richa-new.netlify.app/</link>
       <description>साहित्य, राजनीति, खेल, स्वास्थ्य और अन्य विषयों पर नई रचनाएं जोड़ी जा रही हैं।</description>
       <category>साहित्य</category>
       <pubDate>2024-01-15T12:00:00+05:30</pubDate>
@@ -28,7 +28,7 @@
 
     <item>
       <title>संपादकीय श्रेणी में विशेष रचनाएं</title>
-      <link>https://satya-pratibimb.netlify.app/?category=sampadkiya</link>
+      <link>https://vaak-richa-new.netlify.app/?category=sampadkiya</link>
       <description>हमारे संपादकों द्वारा चुनी गई विशेष टिप्पणी और विश्लेषण।</description>
       <category>संपादकीय</category>
       <pubDate>2024-01-14T10:00:00+05:30</pubDate>
@@ -38,7 +38,7 @@
 
     <item>
       <title>शिक्षा पर सार्थक विचार</title>
-      <link>https://satya-pratibimb.netlify.app/?category=shiksha</link>
+      <link>https://vaak-richa-new.netlify.app/?category=shiksha</link>
       <description>शिक्षा, ज्ञान और विकास से जुड़ी रचनाएं।</description>
       <category>शिक्षा</category>
       <pubDate>2024-01-13T08:00:00+05:30</pubDate>
