@@ -1,0 +1,72 @@
+# वाक ऋचा - robots.txt
+# यह file search engines को बताता है कि site को कैसे crawl करें
+
+# सभी bots के लिए नियम
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+Allow: /sitemap-news.xml
+Allow: /feed.xml
+Disallow: /admin
+Disallow: /api
+Disallow: /private
+Disallow: /temp
+Disallow: /*.json
+Disallow: /node_modules
+
+# Crawl delay - rate limiting
+Crawl-delay: 1
+
+# Request rate
+Request-rate: 1/1s
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+Request-rate: unlimited
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Apple Siri
+User-agent: Siri
+Allow: /
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Badbot को block करो
+User-agent: badbot
+Disallow: /
+
+# सभी sitemaps
+Sitemap: https://satya-pratibimb.netlify.app/sitemap.xml
+Sitemap: https://satya-pratibimb.netlify.app/sitemap-news.xml
+
+# Feed
+Feed: https://satya-pratibimb.netlify.app/feed.xml
+
+# Cache control
+Cache-Control: max-age=604800
+
+# Comments
+# Social media bots को allow करो
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
