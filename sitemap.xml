@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- वाक ऋचा - XML Sitemap -->
+<!-- यह sitemap Google, Bing और अन्य search engines को सभी pages के बारे में बताता है -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage - सबसे महत्वपूर्ण -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- साहित्य Category Pages -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=sahitya</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- राजनीति Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=rajniti</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- खेल Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=khel</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- स्वास्थ्य Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=swasthya</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- सौंदर्य Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=saundarya</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- फैशन Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=fashion</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- जीवन शैली Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=jeevanshaili</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- तकनीक Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=technic</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- डिजिटल दुनिया Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=digital</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- स्थानीय मुद्दे Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=sthaniya</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- शिक्षा Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=shiksha</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- संपादकीय Category -->
+  <url>
+    <loc>https://satya-pratibimb.netlify.app/?category=sampadkiya</loc>
+    <lastmod>2024-01-15T00:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
