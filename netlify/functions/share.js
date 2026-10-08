@@ -52,7 +52,7 @@ exports.handler = async (event) => {
         return { statusCode: 302, headers: { Location: img }, body: "" };
       }
       // फ़ोटो नहीं है -> साइट का लोगो
-      return { statusCode: 302, headers: { Location: `${origin}/icons/icon-512.png` }, body: "" };
+      return { statusCode: 302, headers: { Location: `${origin}/icon-512.png` }, body: "" };
     }
 
     /* ---------- शेयर पेज ---------- */
@@ -70,7 +70,7 @@ exports.handler = async (event) => {
     }
     const imageUrl = post && post.image
       ? `${origin}/share-img/${encodeURIComponent(id)}.jpg`
-      : `${origin}/icons/icon-512.png`;
+      : `${origin}/icon-512.png`;
 
     const html = `<!DOCTYPE html>
 <html lang="hi">
