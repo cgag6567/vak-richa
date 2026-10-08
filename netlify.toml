@@ -19,3 +19,15 @@
   for = "/icons/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+   
+[[redirects]]
+  from = "/share-img/*"
+  to = "/.netlify/functions/share?img=:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/share/*"
+  to = "/.netlify/functions/share?id=:splat"
+  status = 200
+  force = true
