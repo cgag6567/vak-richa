@@ -45,12 +45,14 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="वाक ऋचा — रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच">
 <meta property="og:description" content="साहित्य, राजनीति, खेल, स्वास्थ्य, सौंदर्य, फैशन, जीवन शैली, तकनीक, डिजिटल दुनिया और स्थानीय मुद्दों पर रचनाएं पढ़ें और प्रकाशित करें।">
-<meta property="og:image" content="https://vaak-richa-new.netlify.app//icons/icon-512.png">
+<meta property="og:image" content="https://vaak-richa-new.netlify.app/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
 <meta property="og:url" content="https://vaak-richa-new.netlify.app/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="वाक ऋचा — रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच">
 <meta name="twitter:description" content="साहित्य, राजनीति, खेल, स्वास्थ्य और अन्य विषयों पर रचनाएं पढ़ें और प्रकाशित करें।">
-<meta name="twitter:image" content="https://vaak-richa-new.netlify.app//icons/icon-512.png">
+<meta name="twitter:image" content="https://vaak-richa-new.netlify.app/icon-512.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
@@ -348,7 +350,7 @@
   "url": "https://vaak-richa-new.netlify.app",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://vaak-richa-new.netlify.app/icons/icon-512.png",
+    "url": "https://vaak-richa-new.netlify.app/icon-512.png",
     "width": 512,
     "height": 512
   },
@@ -403,7 +405,7 @@
   "name": "वाक ऋचा",
   "description": "रचनात्मक अभिव्यक्ति का राष्ट्रीय मंच",
   "url": "https://vaak-richa-new.netlify.app/",
-  "logo": "https://vaak-richa-new.netlify.app/icons/icon-512.png",
+  "logo": "https://vaak-richa-new.netlify.app/icon-512.png",
   "sameAs": [
     "https://twitter.com/vaakrichaa",
     "https://www.facebook.com/vaakrichaa"
@@ -443,7 +445,7 @@
   "@type": "NewsArticle",
   "headline": "वाक ऋचा - रचनात्मक साहित्य मंच",
   "description": "साहित्य, राजनीति, खेल और अन्य विषयों पर रचनाएं",
-  "image": "https://vaak-richa-new.netlify.app/icons/icon-512.png",
+  "image": "https://vaak-richa-new.netlify.app/icon-512.png",
   "datePublished": "2024-01-01T00:00:00Z",
   "dateModified": "2024-01-01T00:00:00Z",
   "author": {
@@ -455,7 +457,7 @@
     "name": "वाक ऋचा",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://vaak-richa-new.netlify.app/icons/icon-512.png"
+      "url": "https://vaak-richa-new.netlify.app/icon-512.png"
     }
   }
 }
@@ -688,7 +690,7 @@
 
   /* ---------- शेयर करें: URL/टेक्स्ट निर्माण ---------- */
   function buildPostUrl(postId){
-    return location.origin + location.pathname + "?post=" + encodeURIComponent(postId);
+    return location.origin + "/share/" + encodeURIComponent(postId);
   }
   function buildShareText(post){
     var plain = (post.content || "").replace(/\s+/g, " ").trim();
@@ -1522,8 +1524,7 @@
       closeAllShareMenus();
       var fbPost = posts.filter(function(p){ return p.id === shareFbBtn.dataset.post; })[0];
       if(fbPost){
-        var fbUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(buildPostUrl(fbPost.id)) +
-          "&quote=" + encodeURIComponent(buildShareText(fbPost));
+        var fbUrl = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(buildPostUrl(fbPost.id));
         window.open(fbUrl, "_blank", "noopener,width=600,height=520");
       }
       return;
@@ -1897,7 +1898,7 @@
       "publisher": {
         "@type": "Organization",
         "name": "वाक ऋचा",
-        "logo": { "@type": "ImageObject", "url": "https://vaak-richa-new.netlify.app/icons/icon-512.png" }
+        "logo": { "@type": "ImageObject", "url": "https://vaak-richa-new.netlify.app/icon-512.png" }
       }
     });
     document.head.appendChild(script);
